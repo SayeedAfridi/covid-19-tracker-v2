@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { About, News, Dashboard, Bangladesh } from './Pages'
 import Navigation from './Navigation/Navigation'
-const App = () => {
+import { connect } from 'react-redux'
+import { fetchDailyDataStartAsync } from './redux/DailyData/DailyData.actions'
+const App = ({ fetchDailyData }) => {
+  useEffect(() => {
+    fetchDailyData()
+  })
   return (
     <>
       <Navigation />
@@ -16,5 +21,7 @@ const App = () => {
     </>
   )
 }
-
-export default App
+const mapDispatchToProps = (dispatch) => ({
+  fetchDailyData: () => dispatch(fetchDailyDataStartAsync()),
+})
+export default connect(null, mapDispatchToProps)(App)
