@@ -23,7 +23,8 @@ export const fetchCountryDataStartAsync = (country) => {
       if (data.message) {
         dispatch(fetchCountryDataFailure(data.message))
       } else {
-        dispatch(fetchCountryDataSuccess(data))
+        const newData = { ...data, country }
+        dispatch(fetchCountryDataSuccess(newData))
       }
     }
     FetchApi()
