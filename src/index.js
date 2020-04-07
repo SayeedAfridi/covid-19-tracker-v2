@@ -2,11 +2,12 @@ import React from 'react'
 import { render } from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 render(
-  <React.StrictMode>
+  <Router>
     <App />
-  </React.StrictMode>,
+  </Router>,
   document.getElementById('root')
 )
 serviceWorker.unregister()
