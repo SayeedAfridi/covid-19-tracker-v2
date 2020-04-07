@@ -5,8 +5,10 @@ import Navigation from './Navigation/Navigation'
 import { connect } from 'react-redux'
 import { fetchDailyDataStartAsync } from './redux/DailyData/DailyData.actions'
 import { fetchCountryDataStartAsync } from './redux/CountryData/CountryData.actions'
-const App = ({ fetchDailyData, fetchBDData }) => {
+import { fetchCountriesStartAsync } from './redux/Countries/Countries.actions'
+const App = ({ fetchDailyData, fetchBDData, fetchCountries }) => {
   useEffect(() => {
+    fetchCountries()
     fetchDailyData()
     fetchBDData('Bangladesh')
   })
@@ -26,5 +28,6 @@ const App = ({ fetchDailyData, fetchBDData }) => {
 const mapDispatchToProps = (dispatch) => ({
   fetchDailyData: () => dispatch(fetchDailyDataStartAsync()),
   fetchBDData: (country) => dispatch(fetchCountryDataStartAsync(country)),
+  fetchCountries: () => dispatch(fetchCountriesStartAsync()),
 })
 export default connect(null, mapDispatchToProps)(App)
