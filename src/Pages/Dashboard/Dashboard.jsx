@@ -5,6 +5,8 @@ import { Grid, Card } from '@material-ui/core'
 import { fetchGlobalDataStartAsync } from '../../redux/GlobalData/GlobalData.actions'
 import LeftCards from './LeftCards'
 import { fetchCountryDataStartAsync } from '../../redux/CountryData/CountryData.actions'
+import LineChart from '../../shared/Charts/LineChart/LineChart'
+import BarChart from '../../shared/Charts/BarChart/BarChart'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -12,6 +14,12 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     marginBottom: '5px',
+  },
+  chartCard: {
+    marginTop: 20,
+    width: '100%',
+    padding: 2,
+    minHeight: 300,
   },
 }))
 const Dashboard = ({ fetchGlobalData, fetchCountryData }) => {
@@ -27,17 +35,11 @@ const Dashboard = ({ fetchGlobalData, fetchCountryData }) => {
       <Grid container spacing={3}>
         <LeftCards fetchCountry={fetchCountryData} />
         <Grid item md={6} xs={12} lg={6}>
-          <Card>
-            hello <br />
-            hello <br />
-            hello <br />
-            hello <br />
+          <Card className={classes.chartCard} style={{ position: 'relative' }}>
+            <LineChart />
           </Card>
-          <Card>
-            hello <br />
-            hello <br />
-            hello <br />
-            hello <br />
+          <Card className={classes.chartCard} style={{ position: 'relative' }}>
+            <BarChart />
           </Card>
         </Grid>
         <Grid item xs={12} md={3} lg={3}>
