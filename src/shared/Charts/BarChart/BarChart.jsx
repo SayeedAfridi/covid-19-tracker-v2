@@ -13,11 +13,9 @@ import FadeElement from '../../FadeElement/FadeElement'
 const BarChart = ({ data, loading, loaded }) => {
   return (
     <>
-      <FadeElement enter={loading}>
-        <Loader text='fetching data' />
-      </FadeElement>
-      <FadeElement enter={loaded}>
-        {loaded && (
+      {loading && <Loader text='fetching data' />}
+      {loaded && (
+        <FadeElement enter={loaded}>
           <Bar
             data={{
               labels: ['Infected', 'Recovered', 'Deaths'],
@@ -45,8 +43,8 @@ const BarChart = ({ data, loading, loaded }) => {
               },
             }}
           />
-        )}
-      </FadeElement>
+        </FadeElement>
+      )}
     </>
   )
 }
