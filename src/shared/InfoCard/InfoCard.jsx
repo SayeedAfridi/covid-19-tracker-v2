@@ -11,6 +11,7 @@ import CardHeader from '@material-ui/core/CardHeader'
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained'
 import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise'
 import CountUp from 'react-countup'
+import { Skeleton } from '@material-ui/lab'
 
 const useStyles = makeStyles(({ spacing }) => ({
   card: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles(({ spacing }) => ({
   },
 }))
 
-const InfoCard = ({ title, color, infected, recovered, deaths, className }) => {
+const InfoCard = ({ title, color, data, loading, loaded }) => {
   const classes = useStyles()
   const cardHeaderStyles = useContainedCardHeaderStyles()
   const cardShadowStyles = useSoftRiseShadowStyles({
@@ -43,7 +44,6 @@ const InfoCard = ({ title, color, infected, recovered, deaths, className }) => {
       <CardHeader
         classes={cardHeaderStyles}
         title={title}
-        //avatar={<PublicIcon />}
         style={{
           background: color,
           width: '70%',
@@ -59,25 +59,31 @@ const InfoCard = ({ title, color, infected, recovered, deaths, className }) => {
             <TableRow style={{ borderLeft: '5px solid blue' }}>
               <TableCell>Infected</TableCell>
               <TableCell align='right'>
-                <div>
+                {loading || !loaded ? (
+                  <Skeleton animation='pulse' width='80px' />
+                ) : (
                   <CountUp
                     start={0}
-                    end={infected}
+                    end={data.confirmed.value}
                     duration={2.5}
                     separator=','
                   />
-                </div>
+                )}
               </TableCell>
             </TableRow>
             <TableRow style={{ borderLeft: '5px solid green' }}>
               <TableCell>Recovered</TableCell>
               <TableCell align='right'>
-                <CountUp
-                  start={0}
-                  end={recovered}
-                  duration={2.5}
-                  separator=','
-                />
+                {loading || !loaded ? (
+                  <Skeleton animation='pulse' width='80px' />
+                ) : (
+                  <CountUp
+                    start={0}
+                    end={data.recovered.value}
+                    duration={2.5}
+                    separator=','
+                  />
+                )}
               </TableCell>
             </TableRow>
             <TableRow
@@ -88,7 +94,16 @@ const InfoCard = ({ title, color, infected, recovered, deaths, className }) => {
             >
               <TableCell>Deaths</TableCell>
               <TableCell align='right'>
-                <CountUp start={0} end={deaths} duration={2.5} separator=',' />
+                {loading || !loaded ? (
+                  <Skeleton animation='pulse' width='80px' />
+                ) : (
+                  <CountUp
+                    start={0}
+                    end={data.deaths.value}
+                    duration={2.5}
+                    separator=','
+                  />
+                )}
               </TableCell>
             </TableRow>
           </TableBody>
