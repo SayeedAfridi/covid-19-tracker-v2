@@ -1,5 +1,9 @@
 export const navLinks = [
   {
+    name: 'dashboard',
+    path: '/',
+  },
+  {
     name: 'bangladesh',
     path: '/bd',
   },
