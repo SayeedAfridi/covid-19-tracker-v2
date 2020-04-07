@@ -52,6 +52,13 @@ const InfoCard = ({ title, color, data, loading, loaded }) => {
           transform: 'translateX(-50%)',
           position: 'absolute',
         }}
+        subheader={
+          loading || !loaded ? (
+            <Skeleton />
+          ) : (
+            new Date(data.lastUpdate).toDateString()
+          )
+        }
       />
       <CardContent className={classes.content}>
         <Table style={{ marginTop: 50 }}>
