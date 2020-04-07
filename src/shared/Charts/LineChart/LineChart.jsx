@@ -13,9 +13,7 @@ import FadeElement from '../../FadeElement/FadeElement'
 const LineChart = ({ dailyData, ddFetching }) => {
   return (
     <>
-      <FadeElement enter={ddFetching}>
-        <Loader text='fetching data' />
-      </FadeElement>
+      {ddFetching && <Loader text='fetching data' />}
       <FadeElement enter={!ddFetching}>
         <Line
           data={{
