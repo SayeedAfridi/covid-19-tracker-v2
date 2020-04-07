@@ -13,7 +13,7 @@ export const fetchData = async (country) => {
     } = await axios.get(changeAbleUrl)
     return { confirmed, recovered, deaths, lastUpdate }
   } catch (error) {
-    console.log(error.message)
+    return error
   }
 }
 
@@ -27,7 +27,7 @@ export const fetchDailyData = async () => {
     }))
     return modifiedData
   } catch (error) {
-    console.log(error.message)
+    return error
   }
 }
 
@@ -38,6 +38,6 @@ export const fetchCountries = async () => {
     } = await axios.get(`${url}/countries`)
     return countries.map((c) => c.name)
   } catch (error) {
-    console.log(error.message)
+    return error
   }
 }
