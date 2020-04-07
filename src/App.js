@@ -4,9 +4,11 @@ import { About, News, Dashboard, Bangladesh } from './Pages'
 import Navigation from './Navigation/Navigation'
 import { connect } from 'react-redux'
 import { fetchDailyDataStartAsync } from './redux/DailyData/DailyData.actions'
-const App = ({ fetchDailyData }) => {
+import { fetchCountryDataStartAsync } from './redux/CountryData/CountryData.actions'
+const App = ({ fetchDailyData, fetchBDData }) => {
   useEffect(() => {
     fetchDailyData()
+    fetchBDData('Bangladesh')
   })
   return (
     <>
@@ -23,5 +25,6 @@ const App = ({ fetchDailyData }) => {
 }
 const mapDispatchToProps = (dispatch) => ({
   fetchDailyData: () => dispatch(fetchDailyDataStartAsync()),
+  fetchBDData: (country) => dispatch(fetchCountryDataStartAsync(country)),
 })
 export default connect(null, mapDispatchToProps)(App)
