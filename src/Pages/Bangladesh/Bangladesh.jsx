@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Bangladesh = () => {
-  return <div>Hello from Bangladesh</div>
+  return <div>Under Development</div>
 }
 
 export default Bangladesh
