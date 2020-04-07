@@ -4,10 +4,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Card } from '@material-ui/core'
 import { fetchGlobalDataStartAsync } from '../../redux/GlobalData/GlobalData.actions'
 import LeftCards from './LeftCards'
-import { fetchCountryDataStartAsync } from '../../redux/CountryData/CountryData.actions'
 import LineChart from '../../shared/Charts/LineChart/LineChart'
 import BarChart from '../../shared/Charts/BarChart/BarChart'
-
+import RightCards from './RightCards'
 const useStyles = makeStyles((theme) => ({
   container: {
     margin: '0px 1.5%',
@@ -19,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 20,
     width: '100%',
     padding: 2,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
     minHeight: 300,
   },
 }))
@@ -42,20 +45,7 @@ const Dashboard = ({ fetchGlobalData, fetchCountryData }) => {
             <BarChart />
           </Card>
         </Grid>
-        <Grid item xs={12} md={3} lg={3}>
-          <Card>
-            hello <br />
-            hello <br />
-            hello <br />
-            hello <br />
-          </Card>
-          <Card>
-            hello <br />
-            hello <br />
-            hello <br />
-            hello <br />
-          </Card>
-        </Grid>
+        <RightCards />
       </Grid>
     </div>
   )
@@ -63,7 +53,6 @@ const Dashboard = ({ fetchGlobalData, fetchCountryData }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchGlobalData: () => dispatch(fetchGlobalDataStartAsync()),
-  fetchCountryData: (country) => dispatch(fetchCountryDataStartAsync(country)),
 })
 
 export default connect(null, mapDispatchToProps)(Dashboard)
