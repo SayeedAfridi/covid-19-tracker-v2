@@ -7,11 +7,16 @@ import {
   Typography,
   Button,
   IconButton,
+  useTheme,
+  Tooltip,
 } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import MenuIcon from '@material-ui/icons/Menu'
 import NavDrawer from './NavDrawer'
 import { navLinks } from './NavLinks'
+import Brightness4Icon from '@material-ui/icons/Brightness4'
+import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh'
+
 //import covid19 from '../assets/images/covid-19.png'
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     width: '200px',
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(0.5),
   },
   appBarSpacer: theme.mixins.toolbar,
   title: {
@@ -33,17 +38,18 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
     textTransform: 'uppercase',
-    color: 'black',
+    color: '#fff',
   },
 }))
 
-const Navigation = () => {
+const Navigation = ({ hanldeTheme }) => {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const classes = useStyles()
+  const theme = useTheme()
   const medium = useMediaQuery('(max-width:770px)')
   return (
     <div className={classes.root}>
-      <AppBar position='fixed' color='default' elevation={0}>
+      <AppBar position='fixed'>
         <Toolbar>
           {/* <div className={classes.title}>
             <img
@@ -52,7 +58,7 @@ const Navigation = () => {
               className={classes.logo}
             />
           </div> */}
-          <Typography variant='h5' className={classes.title}>
+          <Typography variant='h6' className={classes.title}>
             <Link to='/' className={classes.link}>
               Covid-19 Tracker
             </Link>
@@ -65,6 +71,21 @@ const Navigation = () => {
                 </Button>
               </Link>
             ))}
+          <Tooltip title='Toggle Dark/Light Theme'>
+            <IconButton
+              edge='end'
+              color='inherit'
+              aria-label='Theme'
+              onClick={hanldeTheme}
+            >
+              {theme.palette.type === 'dark' ? (
+                <BrightnessHighIcon />
+              ) : (
+                <Brightness4Icon />
+              )}
+            </IconButton>
+          </Tooltip>
+
           {medium && (
             <IconButton
               edge='end'
