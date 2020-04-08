@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Grid, Card } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import { createStructuredSelector } from 'reselect'
 import { connect } from 'react-redux'
 import { fetchData } from '../../api/mathdroAPI'
@@ -25,7 +25,7 @@ const LeftCards = ({ globalData, gdFetching, gdLoaded }) => {
   }, [])
 
   return (
-    <Grid component={Card} elevation={0} item md={3} xs={12} lg={3}>
+    <Grid item md={3} xs={12} lg={3}>
       <InfoCard
         title='Global'
         color='red'
