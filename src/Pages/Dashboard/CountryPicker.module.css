@@ -1,6 +1,7 @@
 .formControl {
   width: 90%;
-  margin-bottom: 30px !important;
+  margin: 20px 0px !important;
+  padding: 10px !important;
 }
 
 @media (max-width: 770px) {
