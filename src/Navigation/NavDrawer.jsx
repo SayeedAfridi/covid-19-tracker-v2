@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
     textTransform: 'uppercase',
-    color: 'black',
+    color: theme.palette.text.primary,
   },
 }))
 
