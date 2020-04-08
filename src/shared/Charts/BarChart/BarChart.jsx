@@ -40,7 +40,6 @@ const BarChart = ({ data, loading, loaded }) => {
               title: {
                 display: true,
                 text: `Current State in ${data.country}`,
-                fontColor: '#fff',
               },
             }}
           />
