@@ -1,33 +1,38 @@
 import React from 'react'
 import cx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
-import Card from '@material-ui/core/Card'
-import Table from '@material-ui/core/Table'
-import TableRow from '@material-ui/core/TableRow'
-import TableCell from '@material-ui/core/TableCell'
-import TableBody from '@material-ui/core/TableBody'
-import CardContent from '@material-ui/core/CardContent'
-import CardHeader from '@material-ui/core/CardHeader'
+import {
+  Card,
+  Table,
+  TableRow,
+  TableCell,
+  TableBody,
+  CardContent,
+  CardHeader,
+  useTheme,
+} from '@material-ui/core'
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained'
 import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise'
 import CountUp from 'react-countup'
 import { Skeleton } from '@material-ui/lab'
+import { red, blue, green } from '@material-ui/core/colors'
 
-const useStyles = makeStyles(({ spacing }) => ({
-  card: {
-    marginTop: 40,
-    marginBottom: 10,
-    borderRadius: 8,
-    transition: '0.3s',
-    width: '95%',
-    overflow: 'initial',
-    background: '#ffffff',
-  },
-  content: {
-    textAlign: 'left',
-    overflowX: 'auto',
-  },
-}))
+const useStyles = makeStyles((theme) => {
+  return {
+    card: {
+      marginTop: 40,
+      marginBottom: 10,
+      borderRadius: 8,
+      transition: '0.3s',
+      width: '100%',
+      overflow: 'initial',
+    },
+    content: {
+      textAlign: 'left',
+      overflowX: 'auto',
+    },
+  }
+})
 
 const InfoCard = ({ title, color, data, loading, loaded }) => {
   const classes = useStyles()
@@ -35,6 +40,24 @@ const InfoCard = ({ title, color, data, loading, loaded }) => {
   const cardShadowStyles = useSoftRiseShadowStyles({
     inactive: true,
   })
+  const theme = useTheme()
+  let matColor = theme.palette.primary.main
+  if (theme.palette.type === 'light') {
+    switch (color) {
+      case 'red':
+        matColor = red[500]
+        break
+      case 'green':
+        matColor = green[500]
+        break
+      case 'blue':
+        matColor = blue[500]
+        break
+      default:
+        matColor = theme.palette.primary.main
+        break
+    }
+  }
   return (
     <Card
       elevation={0}
@@ -45,7 +68,7 @@ const InfoCard = ({ title, color, data, loading, loaded }) => {
         classes={cardHeaderStyles}
         title={title}
         style={{
-          background: color,
+          background: matColor,
           width: '70%',
           top: '10px',
           left: '50%',
@@ -63,7 +86,7 @@ const InfoCard = ({ title, color, data, loading, loaded }) => {
       <CardContent className={classes.content}>
         <Table style={{ marginTop: 50 }}>
           <TableBody>
-            <TableRow style={{ borderLeft: '5px solid blue' }}>
+            <TableRow style={{ borderLeft: '5px solid rgba(0, 0, 255, 0.5)' }}>
               <TableCell>Infected</TableCell>
               <TableCell align='right'>
                 {loading || !loaded ? (
@@ -78,7 +101,7 @@ const InfoCard = ({ title, color, data, loading, loaded }) => {
                 )}
               </TableCell>
             </TableRow>
-            <TableRow style={{ borderLeft: '5px solid green' }}>
+            <TableRow style={{ borderLeft: '5px solid rgba(0, 255, 0, 0.5)' }}>
               <TableCell>Recovered</TableCell>
               <TableCell align='right'>
                 {loading || !loaded ? (
@@ -95,7 +118,7 @@ const InfoCard = ({ title, color, data, loading, loaded }) => {
             </TableRow>
             <TableRow
               style={{
-                borderLeft: '5px solid red',
+                borderLeft: '5px solid rgba(255, 0, 0, 0.5)',
                 marginTop: '1px',
               }}
             >
