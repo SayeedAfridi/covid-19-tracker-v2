@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Grid } from '@material-ui/core'
 import { createStructuredSelector } from 'reselect'
 import { connect } from 'react-redux'
-import { fetchData } from '../../api/mathdroAPI'
+import { fetchData } from '../../api/itvanilla'
 import {
   selectGlobalData,
   selectIsGDFetching,
