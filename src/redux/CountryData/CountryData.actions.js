@@ -1,5 +1,5 @@
 import CountryDataActionTypes from './CountryData.types'
-import { fetchData } from '../../api/mathdroAPI'
+import { fetchData } from '../../api/itvanilla'
 
 export const fetchCountryDataStart = () => ({
   type: CountryDataActionTypes.FETCH_COUNTRYDATA_START,
