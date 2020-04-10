@@ -7,16 +7,16 @@ export const navLinks = [
     name: 'map',
     path: '/map',
   },
-  {
-    name: 'bangladesh',
-    path: '/bd',
-  },
-  {
-    name: 'news',
-    path: '/news',
-  },
-  {
-    name: 'about',
-    path: '/about',
-  },
+  // {
+  //   name: 'bangladesh',
+  //   path: '/bd',
+  // },
+  // {
+  //   name: 'news',
+  //   path: '/news',
+  // },
+  // {
+  //   name: 'about',
+  //   path: '/about',
+  // },
 ]
