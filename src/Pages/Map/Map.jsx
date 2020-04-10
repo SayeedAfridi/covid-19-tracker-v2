@@ -20,8 +20,8 @@ const Map = ({ data }) => {
   const type = theme.palette.type
   const mapStyle =
     localStorage.getItem('theme') === 'light'
-      ? 'mapbox://styles/mapbox/streets-v11'
-      : 'mapbox://styles/mapbox/dark-v10'
+      ? 'mapbox://styles/afridi563/ck8ut3l0f1ok61in0thektj1u'
+      : 'mapbox://styles/afridi563/ck8useswq1nru1jqnhbhdt5tj'
 
   useEffect(() => {
     if (data) {
@@ -43,19 +43,14 @@ const Map = ({ data }) => {
           })
           geoJson.features.forEach((feature) => {
             const { properties = {} } = feature
-            let updatedFormatted
             let casesString
 
-            const { country, updated, cases, deaths, recovered } = properties
+            const { country, active, cases, deaths, recovered } = properties
 
             casesString = `${cases}`
 
             if (cases > 1000) {
               casesString = `${casesString.slice(0, -3)}k+`
-            }
-
-            if (updated) {
-              updatedFormatted = new Date(updated).toDateString()
             }
 
             const iconMarker = document.createElement('div')
@@ -66,10 +61,10 @@ const Map = ({ data }) => {
             const popupHtml = `<span class='popup-content'>
             <h2>${country}</h2>
             <ul>
-              <li><strong>Infected:</strong> ${cases}</li>
-              <li><strong>Deaths:</strong> ${deaths}</li>
-              <li><strong>Recovered:</strong> ${recovered}</li>
-              <li><strong>Last Update:</strong> ${updatedFormatted}</li>
+              <li><strong>Infected:</strong><span> ${cases}</span></li>
+              <li><strong>Deaths:</strong><span style='color:red'> ${deaths}</span></li>
+              <li><strong>Recovered:</strong><span style='color:green'> ${recovered}</span></li>
+              <li><strong>Active:</strong><span style='color:orange'> ${active}</span></li>
             </ul>
           </span>`
             new mapboxgl.Marker(iconMarker)
@@ -86,9 +81,9 @@ const Map = ({ data }) => {
       }
       if (map) {
         if (type === 'light') {
-          map.setStyle('mapbox://styles/mapbox/streets-v11')
+          map.setStyle('mapbox://styles/afridi563/ck8ut3l0f1ok61in0thektj1u')
         } else {
-          map.setStyle('mapbox://styles/mapbox/dark-v10')
+          map.setStyle('mapbox://styles/afridi563/ck8useswq1nru1jqnhbhdt5tj')
         }
       }
     }
