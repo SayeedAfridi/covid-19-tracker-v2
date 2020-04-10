@@ -9,6 +9,7 @@ import { fetchCountriesStartAsync } from './redux/Countries/Countries.actions'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { fetchGlobalDataStartAsync } from './redux/GlobalData/GlobalData.actions'
 import theme, { lightTheme } from './shared/theme'
+import Map from './Pages/Map/Map'
 const App = ({ fetchDailyData, fetchGD, fetchBDData }) => {
   const localTheme = localStorage.getItem('theme')
   const defaultTheme = localTheme === 'light' ? lightTheme : theme
@@ -33,6 +34,7 @@ const App = ({ fetchDailyData, fetchGD, fetchBDData }) => {
       <Navigation hanldeTheme={toggleTheme} />
       <Switch>
         <Route exact path='/' component={Dashboard} />
+        <Route exact path='/map' component={Map} />
         <Route exact path='/about' component={About} />
         <Route exact path='/news' component={News} />
         <Route exact path='/bd' component={Bangladesh} />
