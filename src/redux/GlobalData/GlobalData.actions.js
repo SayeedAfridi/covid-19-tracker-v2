@@ -1,5 +1,5 @@
 import GlobalDataActionTypes from './GlobalData.types'
-import { fetchData } from '../../api/mathdroAPI'
+import { fetchData } from '../../api/itvanilla'
 export const fetchGlobalDataStart = () => ({
   type: GlobalDataActionTypes.FETCH_GLOBALDATA_START,
 })
