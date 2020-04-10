@@ -75,41 +75,53 @@ const InfoCard = ({ title, color, data, loading, loaded }) => {
           transform: 'translateX(-50%)',
           position: 'absolute',
         }}
-        subheader={
-          loading || !loaded ? (
-            <Skeleton />
-          ) : (
-            new Date(data.lastUpdate).toDateString()
-          )
-        }
+        subheader={title === 'Global' && new Date(Date.now()).toDateString()}
       />
       <CardContent className={classes.content}>
         <Table style={{ marginTop: 50 }}>
           <TableBody>
-            <TableRow style={{ borderLeft: '5px solid rgba(0, 0, 255, 0.5)' }}>
+            <TableRow style={{ borderLeft: `5px solid ${blue[400]}` }}>
               <TableCell>Infected</TableCell>
               <TableCell align='right'>
                 {loading || !loaded ? (
-                  <Skeleton animation='pulse' width='80px' />
+                  <Skeleton animation='pulse' width='60px' />
                 ) : (
                   <CountUp
                     start={0}
-                    end={data.confirmed.value}
+                    end={data.confirmed}
                     duration={2.5}
                     separator=','
                   />
                 )}
               </TableCell>
             </TableRow>
-            <TableRow style={{ borderLeft: '5px solid rgba(0, 255, 0, 0.5)' }}>
+            <TableRow style={{ borderLeft: `5px solid ${blue[900]}` }}>
+              <TableCell>New Infected</TableCell>
+              <TableCell align='right'>
+                {loading || !loaded ? (
+                  <Skeleton animation='pulse' width='60px' />
+                ) : (
+                  <>
+                    +
+                    <CountUp
+                      start={0}
+                      end={data.newCases}
+                      duration={2.5}
+                      separator=','
+                    />
+                  </>
+                )}
+              </TableCell>
+            </TableRow>
+            <TableRow style={{ borderLeft: `5px solid ${green[500]}` }}>
               <TableCell>Recovered</TableCell>
               <TableCell align='right'>
                 {loading || !loaded ? (
-                  <Skeleton animation='pulse' width='80px' />
+                  <Skeleton animation='pulse' width='60px' />
                 ) : (
                   <CountUp
                     start={0}
-                    end={data.recovered.value}
+                    end={data.recovered}
                     duration={2.5}
                     separator=','
                   />
@@ -118,21 +130,39 @@ const InfoCard = ({ title, color, data, loading, loaded }) => {
             </TableRow>
             <TableRow
               style={{
-                borderLeft: '5px solid rgba(255, 0, 0, 0.5)',
+                borderLeft: `5px solid ${red[500]}`,
                 marginTop: '1px',
               }}
             >
               <TableCell>Deaths</TableCell>
               <TableCell align='right'>
                 {loading || !loaded ? (
-                  <Skeleton animation='pulse' width='80px' />
+                  <Skeleton animation='pulse' width='60px' />
                 ) : (
                   <CountUp
                     start={0}
-                    end={data.deaths.value}
+                    end={data.deaths}
                     duration={2.5}
                     separator=','
                   />
+                )}
+              </TableCell>
+            </TableRow>
+            <TableRow style={{ borderLeft: `5px solid ${red[900]}` }}>
+              <TableCell>New Deaths</TableCell>
+              <TableCell align='right'>
+                {loading || !loaded ? (
+                  <Skeleton animation='pulse' width='60px' />
+                ) : (
+                  <>
+                    +
+                    <CountUp
+                      start={0}
+                      end={data.newDeaths}
+                      duration={2.5}
+                      separator=','
+                    />
+                  </>
                 )}
               </TableCell>
             </TableRow>
