@@ -4,6 +4,10 @@ export const navLinks = [
     path: '/',
   },
   {
+    name: 'map',
+    path: '/map',
+  },
+  {
     name: 'bangladesh',
     path: '/bd',
   },
