@@ -16,6 +16,7 @@ import NavDrawer from './NavDrawer'
 import { navLinks } from './NavLinks'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh'
+import RedDot from '../shared/RedDot/RedDot'
 
 //import covid19 from '../assets/images/covid-19.png'
 const useStyles = makeStyles((theme) => ({
@@ -60,7 +61,7 @@ const Navigation = ({ hanldeTheme }) => {
           </div> */}
           <Typography variant='h6' className={classes.title}>
             <Link to='/' className={classes.link}>
-              Covid-19 Tracker
+              Covid-19 Tracker <RedDot />
             </Link>
           </Typography>
           {!medium &&
