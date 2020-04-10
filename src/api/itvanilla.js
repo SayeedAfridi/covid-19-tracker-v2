@@ -36,3 +36,13 @@ export const fetchData = async (country) => {
     return err
   }
 }
+
+export const fetchAllData = async () => {
+  try {
+    const b_url = 'https://corona.lmao.ninja/countries'
+    const { data = [] } = await axios.get(b_url)
+    return data
+  } catch (err) {
+    return err
+  }
+}
