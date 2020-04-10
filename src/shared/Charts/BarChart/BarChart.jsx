@@ -27,11 +27,7 @@ const BarChart = ({ data, loading, loaded }) => {
                     'rgba(0,255,0, 0.7)',
                     'rgba(255,0,0, 0.7)',
                   ],
-                  data: [
-                    data.confirmed.value,
-                    data.recovered.value,
-                    data.deaths.value,
-                  ],
+                  data: [data.confirmed, data.recovered, data.deaths],
                 },
               ],
             }}
