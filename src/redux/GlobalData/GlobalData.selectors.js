@@ -4,7 +4,7 @@ const selectGlobalDataState = (state) => state.globalData
 
 export const selectGlobalData = createSelector(
   [selectGlobalDataState],
-  (data) => data.data
+  (data) => data && data.data
 )
 
 export const selectIsGDFetching = createSelector(
