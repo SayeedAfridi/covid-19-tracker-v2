@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { Dashboard, Map } from './Pages'
+import { Dashboard, Map, News } from './Pages'
 import Navigation from './Navigation/Navigation'
 import { connect } from 'react-redux'
 import { fetchDailyDataStartAsync } from './redux/DailyData/DailyData.actions'
@@ -35,8 +35,8 @@ const App = ({ fetchDailyData, fetchGD, fetchBDData, fetchAll }) => {
       <Switch>
         <Route exact path='/' component={Dashboard} />
         <Route exact path='/map' component={Map} />
-        {/* <Route exact path='/about' component={About} />
         <Route exact path='/news' component={News} />
+        {/* <Route exact path='/about' component={About} />
         <Route exact path='/bd' component={Bangladesh} /> */}
         <Redirect to='/' />
       </Switch>
