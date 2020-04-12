@@ -20,7 +20,9 @@ const LeftCards = ({ globalData, gdFetching, gdLoaded }) => {
       setCD(data)
       setCDFetching(false)
     }
-    fetchApi()
+    if (!CD) {
+      fetchApi()
+    }
     //eslint-disable-next-line
   }, [])
 
