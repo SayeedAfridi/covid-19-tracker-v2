@@ -1,0 +1,11 @@
+.MuiCardHeader-title {
+  font-size: 1.2rem !important;
+  color: #fff !important;
+}
+
+.buttonLink {
+  position: absolute;
+  right: 3px;
+  bottom: 2px;
+  text-decoration: none;
+}
