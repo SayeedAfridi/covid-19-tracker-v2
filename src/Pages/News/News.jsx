@@ -44,7 +44,7 @@ const News = () => {
         justifyContent: 'center',
       }}
     >
-      <ZoomLoader enter={loading} text='Fetching News' />
+      <ZoomLoader enter={loading} fullPage={true} text='Fetching News' />
       {news &&
         news.map((n, i) => (
           <NewsCard
