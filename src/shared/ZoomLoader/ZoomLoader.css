@@ -7,12 +7,23 @@
   align-items: center;
   justify-content: center;
 }
+.zoom-loader-fullpage {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .zoom-card {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 40%;
-  width: 80%;
+  height: 150px;
+  width: 250px;
 }
