@@ -2,20 +2,20 @@ import React from 'react'
 import { Bar } from 'react-chartjs-2'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
+import { Fade } from '@material-ui/core'
 import {
   selectCountryData,
   selectIsCDFetching,
   isCDLoaded,
 } from '../../../redux/CountryData/CountryData.selectors'
-import Loader from '../../loader/loader'
-import FadeElement from '../../FadeElement/FadeElement'
+import { ZoomLoader } from '../../ZoomLoader/ZoomLoader'
 
 const BarChart = ({ data, loading, loaded }) => {
   return (
     <>
-      {loading && <Loader text='fetching data' />}
+      <ZoomLoader enter={loading} text='Fetching Data' />
       {loaded && (
-        <FadeElement enter={loaded}>
+        <Fade in={loaded} mountOnEnter unmountOnExit timeout={300}>
           <Bar
             data={{
               labels: ['Infected', 'Recovered', 'Deaths'],
@@ -39,7 +39,7 @@ const BarChart = ({ data, loading, loaded }) => {
               },
             }}
           />
-        </FadeElement>
+        </Fade>
       )}
     </>
   )

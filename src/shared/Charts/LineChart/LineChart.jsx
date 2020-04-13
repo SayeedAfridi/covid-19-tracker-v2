@@ -7,14 +7,14 @@ import {
   selectIsDDFetching,
   isDDLoaded,
 } from '../../../redux/DailyData/DailyData.selectors'
-import Loader from '../../loader/loader'
-import FadeElement from '../../FadeElement/FadeElement'
+import { ZoomLoader } from '../../ZoomLoader/ZoomLoader'
+import { Fade } from '@material-ui/core'
 
 const LineChart = ({ dailyData, ddFetching }) => {
   return (
     <>
-      {ddFetching && <Loader text='fetching data' />}
-      <FadeElement enter={!ddFetching}>
+      <ZoomLoader enter={ddFetching} text='Fetching Data' />
+      <Fade in={!ddFetching} mountOnEnter unmountOnExit timeout={300}>
         <Line
           data={{
             labels: dailyData.map(({ date }) => date),
@@ -35,7 +35,7 @@ const LineChart = ({ dailyData, ddFetching }) => {
             ],
           }}
         />
-      </FadeElement>
+      </Fade>
     </>
   )
 }

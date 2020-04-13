@@ -3,10 +3,9 @@ import { newsApiKey } from '../../config'
 import { dateOfPreviousMonth } from './utils'
 import { Grid, useTheme } from '@material-ui/core'
 import axios from 'axios'
-import FadeElement from '../../shared/FadeElement/FadeElement'
-import Loader from '../../shared/loader/loader'
 import NewsCard from './NewsCard'
 import { Pagination } from '@material-ui/lab'
+import { ZoomLoader } from '../../shared/ZoomLoader/ZoomLoader'
 
 const url = `https://newsapi.org/v2/top-headlines?q=corona&from=${dateOfPreviousMonth()}&sortBy=publishedAt&apiKey=${newsApiKey}&language=en&pageSize=18`
 
@@ -39,24 +38,13 @@ const News = () => {
       spacing={2}
       style={{
         background: type === 'light' ? '#fff' : '#3a3a4f',
-        height: '100%',
+        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
-      <FadeElement enter={loading}>
-        <div
-          style={{
-            minHeight: '100vh',
-            minWidth: '100vw',
-            background: type === 'light' ? '#fff' : '#3a3a4f',
-          }}
-        />
-      </FadeElement>
-      <FadeElement enter={loading}>
-        <Loader fullPage={true} text='Fetching News' />
-      </FadeElement>
+      <ZoomLoader enter={loading} text='Fetching News' />
       {news &&
         news.map((n, i) => (
           <NewsCard

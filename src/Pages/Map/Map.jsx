@@ -8,9 +8,8 @@ import { Grid, useTheme } from '@material-ui/core'
 import { selectAllData } from '../../redux/AllData/AllData.selectors'
 import { createStructuredSelector } from 'reselect'
 import { convertGeoJson } from './converToGeoJson'
-import FadeElement from '../../shared/FadeElement/FadeElement'
-import Loader from '../../shared/loader/loader'
 import { mapBoxAccessToken } from '../../config'
+import { ZoomLoader } from '../../shared/ZoomLoader/ZoomLoader'
 
 const Map = ({ data }) => {
   const theme = useTheme()
@@ -37,10 +36,10 @@ const Map = ({ data }) => {
         map.on('load', () => {
           setMap(map)
           const geoJson = convertGeoJson(data)
-          map.addSource('points', {
-            type: 'geojson',
-            data: geoJson,
-          })
+          // map.addSource('points', {
+          //   type: 'geojson',
+          //   data: geoJson,
+          // })
           geoJson.features.forEach((feature) => {
             const { properties = {} } = feature
             let casesString
@@ -96,11 +95,10 @@ const Map = ({ data }) => {
       style={{
         background: theme.palette.type === 'light' ? '#fff' : '#3a3a4f',
         height: '90vh',
+        width: '100vw',
       }}
     >
-      <FadeElement enter={loading}>
-        <Loader text='Loading Map' />
-      </FadeElement>
+      <ZoomLoader enter={loading && !map} text='Loading Map' />
       <div ref={(el) => (mapContainer.current = el)} className={`map`} />
     </Grid>
   )
