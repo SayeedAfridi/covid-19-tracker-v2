@@ -33,6 +33,7 @@ const Dashboard = ({ fetchCountryData }) => {
       spacing={2}
       style={{
         background: theme.palette.type === 'light' ? '#fff' : '#3a3a4f',
+        minHeight: '90vh'
       }}
     >
       <LeftCards fetchCountry={fetchCountryData} />
