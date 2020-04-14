@@ -48,21 +48,20 @@ const Navigation = ({ hanldeTheme }) => {
   const classes = useStyles()
   const theme = useTheme()
   const medium = useMediaQuery('(max-width:770px)')
+  const xSmall = useMediaQuery('(max-width:336px)')
   return (
     <div className={classes.root}>
       <AppBar position='fixed'>
         <Toolbar>
-          {/* <div className={classes.title}>
-            <img
-              src={covid19}
-              alt='Covid-19-Tracker'
-              className={classes.logo}
-            />
-          </div> */}
           <Typography variant='h6' className={classes.title}>
-            <Link to='/' className={classes.link}>
-              Covid-19 Tracker <RedDot />
+            <Link
+              to='/'
+              className={classes.link}
+              style={{ fontSize: xSmall && '1rem' }}
+            >
+              Covid-19 Tracker
             </Link>
+            <RedDot />
           </Typography>
           {!medium &&
             navLinks.map((link, i) => (
