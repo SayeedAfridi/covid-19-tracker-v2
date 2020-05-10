@@ -39,7 +39,7 @@ export const fetchData = async (country) => {
 
 export const fetchAllData = async () => {
   try {
-    const b_url = 'https://corona.lmao.ninja/countries'
+    const b_url = 'https://corona.lmao.ninja/v2/countries'
     const { data = [] } = await axios.get(b_url)
     return data
   } catch (err) {
