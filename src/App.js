@@ -23,6 +23,13 @@ const App = ({ fetchDailyData, fetchGD, fetchBDData, fetchAll }) => {
     }
   }
   useEffect(() => {
+    if (theTheme.palette.type === 'light') {
+      document.body.style.backgroundColor = '#FFF'
+    } else {
+      document.body.style.backgroundColor = '#3A3A4F'
+    }
+  }, [setTheme, theTheme])
+  useEffect(() => {
     fetchGD()
     fetchDailyData()
     fetchAll()
